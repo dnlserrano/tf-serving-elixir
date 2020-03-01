@@ -1,6 +1,6 @@
 # tf-serving-elixir
 
-Elixir bindings for gRPC Tensorflow Serving APIs
+Elixir gRPC client for Tensorflow Serving
 
 ## Use
 
