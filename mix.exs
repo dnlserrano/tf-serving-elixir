@@ -21,7 +21,10 @@ defmodule Tfserving.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:protobuf, "~> 0.7.1"}
+      {:protobuf, "~> 0.7.1"},
+      {:grpc, github: "elixir-grpc/grpc"},
+      {:gun, github: "ninenines/gun", ref: "master", override: true},
+      {:cowlib, github: "ninenines/cowlib", ref: "master", override: true},
     ]
   end
 end

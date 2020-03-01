@@ -1,3 +1,8 @@
 %{
+  "cowboy": {:hex, :cowboy, "2.7.0", "91ed100138a764355f43316b1d23d7ff6bdb0de4ea618cb5d8677c93a7a2f115", [:rebar3], [{:cowlib, "~> 2.8.0", [hex: :cowlib, repo: "hexpm", optional: false]}, {:ranch, "~> 1.7.1", [hex: :ranch, repo: "hexpm", optional: false]}], "hexpm"},
+  "cowlib": {:git, "https://github.com/ninenines/cowlib.git", "bbb6e57123ca12ad18e88f4a6e28b866afa3ed5a", [ref: "master"]},
+  "grpc": {:git, "https://github.com/elixir-grpc/grpc.git", "485349728782a6e8e83fb3eab745860737eeef6f", []},
+  "gun": {:git, "https://github.com/ninenines/gun.git", "aaf29783cc1932bcc167c63cdcd064cd09b07be2", [ref: "master"]},
   "protobuf": {:hex, :protobuf, "0.7.1", "7d1b9f7d9ecb32eccd96b0c58572de4d1c09e9e3bc414e4cb15c2dce7013f195", [:mix], [], "hexpm"},
+  "ranch": {:hex, :ranch, "1.7.1", "6b1fab51b49196860b733a49c07604465a47bdb78aa10c1c16a3d199f7f8c881", [:rebar3], [], "hexpm"},
 }
