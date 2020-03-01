@@ -7,5 +7,5 @@ Elixir gRPC client for Tensorflow Serving
 To generate the Elixir files from Protobuf specs, just run:
 
 ```
-protoc --elixir_out=./lib/messages protos/tensorflow/core/framework/* protos/tensorflow_serving/apis/* protos/google/protobuf/* -I protos
+protoc --elixir_out=plugins=grpc:./lib/messages protos/tensorflow/core/framework/* protos/tensorflow_serving/apis/* protos/google/protobuf/* -I protos
 ```
