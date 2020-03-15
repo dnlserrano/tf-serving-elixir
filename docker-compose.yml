@@ -1,0 +1,23 @@
+version: "3.3"
+services:
+
+  tfserving:
+    image: tensorflow/serving:2.1.0
+    volumes:
+      - ./model:/models/digits
+    environment:
+      MODEL_NAME: digits
+    ports:
+      - "8500"
+
+  webapp:
+    build: .
+    depends_on:
+      - tfserving
+    volumes:
+      - .:/home/app
+    environment:
+      ERTS_INCLUDE_DIR: /usr/lib/erlang/erts-10.2.4/include
+      TF_SERVING_HOST: tfserving
+    ports:
+      - "80:4000"

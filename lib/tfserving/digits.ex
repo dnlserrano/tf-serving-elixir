@@ -45,10 +45,10 @@ defmodule TfServing.Digits do
             float_val: input
           ),
         },
-        model_spec: Tensorflow.Serving.ModelSpec.new(name: "cnn")
+        model_spec: Tensorflow.Serving.ModelSpec.new(name: "digits")
       )
 
-    {:ok, channel} = GRPC.Stub.connect("localhost:8500")
+    {:ok, channel} = GRPC.Stub.connect("#{tf_serving_host()}:8500")
     {:ok, %Tensorflow.Serving.PredictResponse{outputs: outputs}} =
       Tensorflow.Serving.PredictionService.Stub.predict(channel, request)
 
@@ -62,5 +62,9 @@ defmodule TfServing.Digits do
     File.rm(output_file)
 
     {:ok, digit}
+  end
+
+  def tf_serving_host do
+    System.get_env("TF_SERVING_HOST", "localhost")
   end
 end

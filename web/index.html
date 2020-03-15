@@ -83,7 +83,7 @@
 
       function guess() {
         var image = canvas.toDataURL("image/png");
-        $.post('http://localhost:4000/guess', {image: image}, function(data) {
+        $.post('/guess', {image: image}, function(data) {
             $("#guess").text(data.digit);
         });
       }
