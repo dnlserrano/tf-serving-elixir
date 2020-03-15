@@ -1,0 +1,106 @@
+<!--
+  Source: https://blog-en.openalfa.com/how-to-draw-with-the-mouse-in-a-html5-canvas
+-->
+<html>
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <title>Digits</title>
+    <script type="text/javascript" src="/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+      var moves = new Array();
+      var pressed, context, canvas = null;
+
+      function initCanvas() {
+        var canvasDiv = document.getElementById('canvas');
+
+        canvas = document.createElement('canvas');
+        canvas.setAttribute('width', 200);
+        canvas.setAttribute('height', 200);
+        canvas.setAttribute('id', 'canvas');
+
+        canvasDiv.appendChild(canvas);
+        if(typeof G_vmlCanvasManager != 'undefined') {
+          canvas = G_vmlCanvasManager.initElement(canvas);
+        }
+
+        context = canvas.getContext("2d");
+
+        $('#canvas').mousedown(function(e){
+          pressed= true;
+          moves.push([e.pageX - this.offsetLeft,
+            e.pageY - this.offsetTop,
+            false]);
+          redraw();
+        });
+
+        $('#canvas').mousemove(function(e){
+          if(pressed){
+              moves.push([e.pageX - this.offsetLeft,
+                  e.pageY - this.offsetTop,
+                  true]);
+            redraw();
+          }
+        });
+
+        $('#canvas').mouseup(function(e){
+          pressed = false;
+        });
+
+        $('#canvas').mouseleave(function(e){
+          pressed = false;
+        });
+
+        redraw();
+      }
+
+      function redraw() {
+        canvas.width = canvas.width;
+
+        context.strokeStyle = "#000000";
+        context.lineJoin = "round";
+        context.lineWidth = 15;
+
+        for(var i=0; i < moves.length; i++)
+        {
+          context.beginPath();
+          if(moves[i][2] && i){
+            context.moveTo(moves[i-1][0], moves[i-1][1]);
+          }else{
+            context.moveTo(moves[i][0], moves[i][1]);
+          }
+          context.lineTo(moves[i][0], moves[i][1]);
+          context.closePath();
+          context.stroke();
+        }
+      }
+
+      function clean() {
+        $("#guess").text("");
+        moves = new Array();
+        context.clearRect(0, 0, canvas.width, canvas.height);
+      }
+
+      function guess() {
+        var image = canvas.toDataURL("image/png");
+        $.post('http://localhost:4000/guess', {image: image}, function(data) {
+            $("#guess").text(data.digit);
+        });
+      }
+    </script>
+  </head>
+  <body onload="initCanvas();">
+    <div id="canvas" style="width: 200px; height: 200px; background: #fff; border-style: solid"></div>
+
+    <div align="center" style="width: 200px;">
+      <span>
+        <input type="submit" value="Guess" onclick="guess();" style="width: 90px; display: inline;">
+        <input type="submit" value="Clear" onclick="clean();" style="width: 90px; display: inline;">
+      </span>
+    </div>
+
+    <div style="width: 200px; height: 50px; background: #fff; border-style: solid; text-align: center">
+      <span id="guess" style="font-family: Courier New; font-size: 20px; font-weight: bold; line-height: 50px"></span>
+    </div>
+  </body>
+</html>

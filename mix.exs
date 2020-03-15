@@ -14,7 +14,8 @@ defmodule Tfserving.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger]
+      extra_applications: [:logger],
+      mod: {TfServing.Application, []}
     ]
   end
 
@@ -25,6 +26,9 @@ defmodule Tfserving.MixProject do
       {:grpc, github: "elixir-grpc/grpc"},
       {:gun, github: "ninenines/gun", ref: "master", override: true},
       {:cowlib, github: "ninenines/cowlib", ref: "master", override: true},
+      {:pixels, "0.2.1"},
+      {:plug_cowboy, "~> 2.0"},
+      {:elixir_uuid, "~> 1.2"}
     ]
   end
 end

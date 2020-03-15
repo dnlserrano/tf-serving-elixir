@@ -1,8 +1,16 @@
 %{
   "cowboy": {:hex, :cowboy, "2.7.0", "91ed100138a764355f43316b1d23d7ff6bdb0de4ea618cb5d8677c93a7a2f115", [:rebar3], [{:cowlib, "~> 2.8.0", [hex: :cowlib, repo: "hexpm", optional: false]}, {:ranch, "~> 1.7.1", [hex: :ranch, repo: "hexpm", optional: false]}], "hexpm"},
   "cowlib": {:git, "https://github.com/ninenines/cowlib.git", "bbb6e57123ca12ad18e88f4a6e28b866afa3ed5a", [ref: "master"]},
+  "elixir_make": {:hex, :elixir_make, "0.6.0", "38349f3e29aff4864352084fc736fa7fa0f2995a819a737554f7ebd28b85aaab", [:mix], [], "hexpm"},
+  "elixir_uuid": {:hex, :elixir_uuid, "1.2.1", "dce506597acb7e6b0daeaff52ff6a9043f5919a4c3315abb4143f0b00378c097", [:mix], [], "hexpm"},
   "grpc": {:git, "https://github.com/elixir-grpc/grpc.git", "485349728782a6e8e83fb3eab745860737eeef6f", []},
   "gun": {:git, "https://github.com/ninenines/gun.git", "aaf29783cc1932bcc167c63cdcd064cd09b07be2", [ref: "master"]},
+  "matrex": {:hex, :matrex, "0.6.8", "ccb491e661bae7931ee6b0e68f5e1cd28528e5360a59bc3ab4d759b89be1701e", [:make], [{:elixir_make, "~> 0.4", [hex: :elixir_make, repo: "hexpm", optional: false]}], "hexpm"},
+  "mime": {:hex, :mime, "1.3.1", "30ce04ab3175b6ad0bdce0035cba77bba68b813d523d1aac73d9781b4d193cf8", [:mix], [], "hexpm"},
+  "pixels": {:hex, :pixels, "0.2.1", "fef581b455d95aaabeccf56d78aee4bfb9146837e4be8b3d0ec71ca4fe1175d0", [:make, :mix], [{:elixir_make, "~> 0.6.0", [hex: :elixir_make, repo: "hexpm", optional: false]}], "hexpm"},
+  "plug": {:hex, :plug, "1.9.0", "8d7c4e26962283ff9f8f3347bd73838e2413fbc38b7bb5467d5924f68f3a5a4a", [:mix], [{:mime, "~> 1.0", [hex: :mime, repo: "hexpm", optional: false]}, {:plug_crypto, "~> 1.0", [hex: :plug_crypto, repo: "hexpm", optional: false]}, {:telemetry, "~> 0.4", [hex: :telemetry, repo: "hexpm", optional: true]}], "hexpm"},
+  "plug_cowboy": {:hex, :plug_cowboy, "2.1.2", "8b0addb5908c5238fac38e442e81b6fcd32788eaa03246b4d55d147c47c5805e", [:mix], [{:cowboy, "~> 2.5", [hex: :cowboy, repo: "hexpm", optional: false]}, {:plug, "~> 1.7", [hex: :plug, repo: "hexpm", optional: false]}], "hexpm"},
+  "plug_crypto": {:hex, :plug_crypto, "1.1.2", "bdd187572cc26dbd95b87136290425f2b580a116d3fb1f564216918c9730d227", [:mix], [], "hexpm"},
   "protobuf": {:hex, :protobuf, "0.7.1", "7d1b9f7d9ecb32eccd96b0c58572de4d1c09e9e3bc414e4cb15c2dce7013f195", [:mix], [], "hexpm"},
   "ranch": {:hex, :ranch, "1.7.1", "6b1fab51b49196860b733a49c07604465a47bdb78aa10c1c16a3d199f7f8c881", [:rebar3], [], "hexpm"},
 }
