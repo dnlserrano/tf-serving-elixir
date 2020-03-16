@@ -11,7 +11,7 @@ RUN apt-get update && \
 RUN mix local.hex --force && \
   mix local.rebar --force
 
-EXPOSE 4000
+EXPOSE 8000 8443
 
 RUN chmod +x script/run.sh
 ENTRYPOINT ["sh", "script/run.sh"]

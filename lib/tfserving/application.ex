@@ -4,14 +4,23 @@ defmodule TfServing.Application do
   use Application
 
   def start(_type, _args) do
-    # List all child processes to be supervised
     children = [
-      {Plug.Cowboy, scheme: :http, plug: TfServing.Router, options: [port: 4000]}
+      {Plug.Cowboy, scheme: :http, plug: TfServing.Router, options: [port: 8000]},
+      {Plug.Cowboy, scheme: :https, plug: TfServing.Router, options: plug_opts()}
     ]
 
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
     opts = [strategy: :one_for_one, name: TfServing.Supervisor]
     Supervisor.start_link(children, opts)
+  end
+
+  defp plug_opts do
+    [
+      port: 8443,
+      cipher_suite: :strong,
+      certfile: "priv/cert/cert.pem",
+      keyfile: "priv/cert/privkey.pem",
+      cacertfile: "priv/cert/chain.pem",
+      otp_app: :tfserving
+    ]
   end
 end

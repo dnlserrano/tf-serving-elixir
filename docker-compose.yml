@@ -20,4 +20,5 @@ services:
       ERTS_INCLUDE_DIR: /usr/lib/erlang/erts-10.2.4/include
       TF_SERVING_HOST: tfserving
     ports:
-      - "80:4000"
+      - "80:8000"
+      - "443:8443"
