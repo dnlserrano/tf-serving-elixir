@@ -23,5 +23,8 @@ protoc --elixir_out=plugins=grpc:./lib/messages protos/tensorflow/core/framework
 To run the model for hand-written digits, run:
 
 ```
+docker run -p 8501:8501 -p 8500:8500 \
+  --mount type=bind,source=/path/to/mnist/digits,target=/models/digits \
+  -e MODEL_NAME=digits -t tensorflow/serving &
 ```
 
